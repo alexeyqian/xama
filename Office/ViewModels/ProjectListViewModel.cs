@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Office.Models;
 using Office.Services;
+using Office.Utility;
 using Xamarin.Forms;
 
 namespace Office.ViewModels

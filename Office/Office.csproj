@@ -19,5 +19,7 @@
     <Folder Include="Repository\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Utility\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 </Project>
