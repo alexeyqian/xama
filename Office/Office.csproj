@@ -21,5 +21,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Utility\" />
     <Folder Include="Views\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Converter\" />
   </ItemGroup>
 </Project>
