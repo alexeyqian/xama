@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Office.ViewModels;
 using Xamarin.Forms;
 
 namespace Office.Services

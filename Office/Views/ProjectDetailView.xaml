@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Office.Views.ProjectDetailView">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Office.Views.ProjectDetailView"
+    Title="Project Detail Page">
     <ContentPage.Content>
+        <ScrollView>
+            <Grid x:Name="ProjectGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*"></ColumnDefinition>
+                    <ColumnDefinition Width=".6*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="NameLabel"
+                       Text="Project Name"
+                       Grid.Row="0"
+                       Grid.Column="0">
+                </Label>
+                <Entry
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding SelectedProject.Name,Mode=TwoWay}">
+                </Entry>
+
+                <Label x:Name="DescriptionLabel"
+                       Text="Project Description"
+                       Grid.Row="1"
+                       Grid.Column="0">
+                </Label>
+                <Editor
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding SelectedProject.Description,Mode=TwoWay}">
+                </Editor>
+
+                <Label x:Name="IsStartedLabel"
+                       Text="Is Started"
+                       Grid.Row="2"
+                       Grid.Column="0">
+                </Label>
+                <Switch
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    IsToggled="{Binding SelectedProject.IsStarted,Mode=TwoWay}">
+                </Switch>
+
+                <Button x:Name="SaveProjectButton"
+                        Command="{Binding SaveCommand}"
+                        Text="Save Project"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"></Button>
+
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -21,7 +21,7 @@ namespace Office
             NavigationService.Configure(ViewNames.ProjectListView, typeof(ProjectListView));
             NavigationService.Configure(ViewNames.ProjectDetailView, typeof(ProjectDetailView));
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new ProjectListView()); //new MainPage();
         }
 
         protected override void OnStart()

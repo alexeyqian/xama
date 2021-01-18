@@ -1,4 +1,6 @@
 ﻿using System;
+using Office.ViewModels;
+
 namespace Office.Utility
 {
     public static class ViewModelLocator

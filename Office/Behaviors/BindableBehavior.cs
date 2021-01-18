@@ -33,7 +33,7 @@ namespace Office.Behaviors
 
         protected override void OnDetachingFrom(T bindable)
         {
-           view.BindingContextChanged -= OnBindingContextChanged;
+           bindable.BindingContextChanged -= OnBindingContextChanged;
         }
 
     }
