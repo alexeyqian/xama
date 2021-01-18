@@ -1,26 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Office.Views.ProjectListView">
-    <ListView x:Name="MyListView" ItemsSource="{Binding Items}" ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:behaviors="clr-namespace:Office.Behaviors "
+             xmlns:viewModels = "clr-namespace:Office.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Office.Views.ProjectListView"
+             Title="Office Project Management">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Text="Load Projects" Command="{Binding LoadCommand}"></Button>
+        <Button Grid.Row="1" Text="Add Project" Command="{Binding AddCommand}"></Button>
+
+        <ListView x:Name="ProjectsListView" HasUnevenRows="True"
+                  Grid.Row="2"
+                  ItemsSource="{Binding Projects}"
+                  CachingStrategy="RecycleElement">
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    EventName="ItemTapped"
+                    Command="{Binding ProjectSelectedCommand}"
+                    EventArgsConverter="{StaticResource LoadItemTappedConverter}">
+                </behaviors:EventToCommandBehavior>
+            </ListView.Behaviors>
         <!--Built in Cells-->
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding .}" />
+                <ViewCell>
+                    <Grid HeightRequest="100" Margin="5" BackgroundColor="White" RowSpacing="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}"  Margin="3" FontAttributes="Bold"></Label>
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Description}"  Margin="3"></Label>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
-        <!--Custom View Cells-->
-        <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
+       
     </ListView>
+    </Grid>
+
+    
 </ContentPage>
